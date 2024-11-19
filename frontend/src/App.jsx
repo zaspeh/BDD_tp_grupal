@@ -14,15 +14,15 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: "sqlForm",
         element: <HomePage />,
       },
       {
-        path: "about",
+        path: "noSqlForm",
         element: <AboutPage />,
       },
       {
-        path: "contact",
+        path: "showDb",
         element: <ContactPage />,
       },
     ],

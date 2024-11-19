@@ -9,8 +9,7 @@ export const Layout = () => {
         <ul className="flex">
           <NavButton buttonText={"Add sql form"} linkTo={"/sqlForm"}/>
           <NavButton buttonText={"Add noSql form"} linkTo={"/noSqlForm"}/>
-          <NavButton buttonText={"Show sql"} linkTo={"/showSql"}/>
-          <NavButton buttonText={"Show noSql"} linkTo={"/showNoSql"}/>
+          <NavButton buttonText={"Show databases"} linkTo={"/showDb"}/>
         </ul>
       </nav>
       <Outlet />
