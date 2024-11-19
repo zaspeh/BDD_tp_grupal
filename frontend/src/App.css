@@ -1,7 +1,12 @@
+/* Default styles */
+
 #root {
   max-width: auto;
   max-height:  auto;
   margin: 0 auto;
   padding: 2rem;
-  text-align: center;
+  /* text-align: center; */
+  border: 1px solid red;
+  height: 100%;
+  width: 100%;
 }

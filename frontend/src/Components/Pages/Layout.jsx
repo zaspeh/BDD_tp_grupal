@@ -2,14 +2,14 @@ import { Outlet, Link } from "react-router-dom";
 
 export const Layout = () => {
   return (
-    <div className="flex flex-col h-100  border-red-500 border">
-      <nav className="w-full">
+    <div className="flex flex-col h-full">
+      <nav className="w-full flex rounded-full border justify-between pl-3 pr-5 items-center">
         <h1>This should be a cool navbar</h1>
-        <ul>
-          <li><Link to="/">Add sql form</Link></li>
-          <li><Link to="/about">Add noSql form</Link></li>
-          <li><Link to="/contact">Show sql</Link></li>
-          <li><Link to="/contact">Show noSql</Link></li>
+        <ul className="flex">
+          <li className="navButton"><Link to="/">Add sql form</Link></li>
+          <li className="navButton"><Link to="/about">Add noSql form</Link></li>
+          <li className="navButton"><Link to="/contact">Show sql</Link></li>
+          <li className="navButton"><Link to="/contact">Show noSql</Link></li>
 
         </ul>
       </nav>
