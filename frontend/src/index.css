@@ -47,7 +47,7 @@ h1 {
 html, body {
   height: 100%;
   width: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   background-color: #242424;
 }
 

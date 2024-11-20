@@ -3,9 +3,9 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { BrowserRouter as Router, Route, Routes, Link, createBrowserRouter, RouterProvider } from "react-router-dom"
-import { AboutPage } from "./Components/Pages/AboutPage"
-import { HomePage } from "./Components/Pages/HomePage"
-import { ContactPage } from "./Components/Pages/ContactPage"
+import { NoSqlForm } from "./Components/Pages/NoSqlForm"
+import { SqlForm } from "./Components/Pages/SqlForm"
+import { ShowDbs } from "./Components/Pages/ShowDbs"
 import { Layout } from "./Components/Pages/Layout"
 
 const router = createBrowserRouter([
@@ -15,15 +15,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "sqlForm",
-        element: <HomePage />,
+        element: <SqlForm />,
       },
       {
         path: "noSqlForm",
-        element: <AboutPage />,
+        element: <NoSqlForm />,
       },
       {
         path: "showDb",
-        element: <ContactPage />,
+        element: <ShowDbs />,
       },
     ],
   },
