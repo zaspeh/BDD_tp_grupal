@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GenericInput from './GenericInput';
 
 
 
@@ -28,15 +29,17 @@ export const GenericForm = ({handleSubmit}) => {
   }
   
   return (
-      <form onSubmit={onSubmit}>
-        <input type="text" name="name" placeholder="Name" onChange={handleChange} />
-        <input type="text" name="lastName" placeholder="Last Name" onChange={handleChange} />
-        <input type="text" name="username" placeholder="Username" onChange={handleChange} />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-        <input type="text" name="phoneNumber" placeholder="Phone Number" onChange={handleChange} />
-        <input type="date" name="dateOfBirth" onChange={handleChange} />
-        <button type="submit">Submit</button>
+      <form onSubmit={onSubmit} className='flex flex-col'>
+        <GenericInput name={"name"} type={"text"} placeholder={"Name"} handleChange={handleChange} /> 
+        <GenericInput name={"lastName"} type={"text"} placeholder={"Last Name"} handleChange={handleChange} />
+        <GenericInput name={"username"} type={"text"} placeholder={"Username"} handleChange={handleChange} />
+        <GenericInput name={"email"} type={"email"} placeholder={"Email"} handleChange={handleChange} />
+        <GenericInput name={"password"} type={"password"} placeholder={"Password"} handleChange={handleChange} />
+        <GenericInput name={"phoneNumber"} type={"text"} placeholder={"Phone Number"} handleChange={handleChange} />
+        <GenericInput name={"dateOfBirth"} type={"date"} handleChange={handleChange} />
+        <button type="submit" className='h-10 w-40 border border-red-500 self-center my-5 rounded-lg hover:bg-headerBlack'>
+            Submit
+        </button>
       </form>
   );
 }

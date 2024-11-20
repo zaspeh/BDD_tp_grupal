@@ -10,8 +10,8 @@ export const SqlForm = () => {
   }
 
   return (
-    <div className='h-full border border-red-500'>
-      <h1>SQL database data injection form</h1>
+    <div className='h-full border border-red-500 flex flex-col justify-center items-center'>
+      <h1 className='mb-5 font-bold text-2xl'>SQL database data injection form</h1>
       <GenericForm handleSubmit={handleSubmit} />
     </div>
   );
