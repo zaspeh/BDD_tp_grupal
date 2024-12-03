@@ -30,13 +30,13 @@ export const GenericForm = ({handleSubmit}) => {
   
   return (
       <form onSubmit={onSubmit} className='flex flex-col'>
-        <GenericInput name={"name"} type={"text"} placeholder={"Name"} handleChange={handleChange} /> 
-        <GenericInput name={"lastName"} type={"text"} placeholder={"Last Name"} handleChange={handleChange} />
-        <GenericInput name={"username"} type={"text"} placeholder={"Username"} handleChange={handleChange} />
-        <GenericInput name={"email"} type={"email"} placeholder={"Email"} handleChange={handleChange} />
-        <GenericInput name={"password"} type={"password"} placeholder={"Password"} handleChange={handleChange} />
-        <GenericInput name={"phoneNumber"} type={"text"} placeholder={"Phone Number"} handleChange={handleChange} />
-        <GenericInput name={"dateOfBirth"} type={"date"} handleChange={handleChange} />
+        <GenericInput name={"name"} type={"text"} placeholder={"Name"} handleChange={handleChange} required={true} /> 
+        <GenericInput name={"lastName"} type={"text"} placeholder={"Last Name"} handleChange={handleChange} required={true}/>
+        <GenericInput name={"username"} type={"text"} placeholder={"Username"} handleChange={handleChange} required={true}/>
+        <GenericInput name={"email"} type={"email"} placeholder={"Email"} handleChange={handleChange} required={true}/>
+        <GenericInput name={"password"} type={"password"} placeholder={"Password"} handleChange={handleChange} required={true} />
+        <GenericInput name={"phoneNumber"} type={"text"} placeholder={"Phone Number"} handleChange={handleChange} required={false}/>
+        <GenericInput name={"dateOfBirth"} type={"date"} handleChange={handleChange} required={false} />
         <button type="submit" className='h-10 w-40 border border-red-500 self-center my-5 rounded-lg hover:bg-headerBlack'>
             Submit
         </button>
