@@ -22,3 +22,5 @@ frontend/*.local
 *.njsproj
 *.sln
 *.sw?
+.env
+/backend/__pycache__

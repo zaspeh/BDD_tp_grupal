@@ -2,9 +2,12 @@ from sqlalchemy import create_engine, MetaData
 from sqlalchemy.ext.declarative import declarative_base  # Asegúrate de importar declarative_base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
+import os
 
 # Configuración de la base de datos PostgreSQL
-SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://user:password@localhost/test_db"
+# SQLALCHEMY_DATABASE_URL = "postgresql+asyncpg://app:app_pass@localhost/test_db"
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL")
+
 # 44931392
 # 
 # Crear motor asíncrono

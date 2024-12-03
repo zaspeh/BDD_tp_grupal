@@ -5,6 +5,7 @@ from app.db.postgresql import get_db
 from app.schemas import ItemBase, Item as ItemResponse
 from app import crud
 from typing import List
+
 router = APIRouter()
 
 # Crear un nuevo registro
@@ -21,6 +22,7 @@ async def create_record(item_data: ItemBase, db: AsyncSession = Depends(get_db))
 async def get_records(db: AsyncSession = Depends(get_db)):
     try:
         items = await crud.relational.get_records(db=db)
+        print("Testing that it works")
         return items
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error al obtener los registros: {e}")
