@@ -12,8 +12,8 @@ export const GenericForm = ({handleSubmit}) => {
     username: '',
     email: '',
     password: '',
-    phoneNumber: '',
-    dateOfBirth: ''
+    phone: '',
+    birthday: ''
   })
 
   const handleChange = (e) => {
@@ -35,8 +35,8 @@ export const GenericForm = ({handleSubmit}) => {
         <GenericInput name={"username"} type={"text"} placeholder={"Username"} handleChange={handleChange} required={true}/>
         <GenericInput name={"email"} type={"email"} placeholder={"Email"} handleChange={handleChange} required={true}/>
         <GenericInput name={"password"} type={"password"} placeholder={"Password"} handleChange={handleChange} required={true} />
-        <GenericInput name={"phoneNumber"} type={"text"} placeholder={"Phone Number"} handleChange={handleChange} required={false}/>
-        <GenericInput name={"dateOfBirth"} type={"date"} handleChange={handleChange} required={false} />
+        <GenericInput name={"phone"} type={"text"} placeholder={"Phone Number"} handleChange={handleChange} required={true}/>
+        <GenericInput name={"birthday"} type={"date"} handleChange={handleChange} required={true} />
         <button type="submit" className='h-10 w-40 border border-red-500 self-center my-5 rounded-lg hover:bg-headerBlack'>
             Submit
         </button>
