@@ -6,7 +6,23 @@ import { GenericForm } from '../GenericForm';
 export const SqlForm = () => {
 
   const handleSubmit = (formData) => {
-    console.log(formData)
+    console.log('Form data submitted');
+    console.log(formData);
+
+    fetch('http://localhost:3000/sql/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    }).then(response => response.json())
+    .then(data => {
+      console.log("Response: ");
+      console.log(data);
+    }).catch(error => {
+      console.log("Error: ");
+      console.log(error);
+    });
   }
 
   return (

@@ -23,7 +23,26 @@ GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO postgres;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO postgres;
 GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO postgres;
 ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO postgres;
+
+-- Connect to the test_db database and create tables
+\c test_db
+
+-- Create a sample table
+CREATE TABLE IF NOT EXISTS items (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
+    username VARCHAR(30) NOT NULL,
+    email VARCHAR(60) NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    birthday DATE NOT NULL,
+    createdAt TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
 EOF
+
+
 
 # Configure pg_hba.conf to allow local connections
 PG_HBA_CONF=$(sudo -u postgres psql -t -P format=unaligned -c "SHOW hba_file")

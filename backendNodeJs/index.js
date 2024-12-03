@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const { connectDB, sequelize } = require('./config/database');
 const Item = require('./models/Item');
+const cors = require('cors');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -10,12 +11,17 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+// Using CORS to test
+app.use(cors());
+
 // Connect to the database
 connectDB();
 
 // Define routes
-app.post('/items/create', async (req, res) => {
+app.post('/sql/create', async (req, res) => {
   try {
+    console.log("sql/create Received: ");
+    console.log(req.body);
     const item = await Item.create(req.body);
     console.log("Item created: ", item);
     res.status(201).json(item);
@@ -24,8 +30,10 @@ app.post('/items/create', async (req, res) => {
   }
 });
 
-app.get('/items/getAll', async (req, res) => {
+app.get('/sql/getAll', async (req, res) => {
   try {
+    console.log("sql/getAll received: ");
+    console.log(req.body);
     const items = await Item.findAll();
     console.log("Items: ", items);
     res.status(200).json(items);
@@ -34,8 +42,10 @@ app.get('/items/getAll', async (req, res) => {
   }
 });
 
-app.put('/items/:id', async (req, res) => {
+app.put('/sql/update/:id', async (req, res) => {
   try {
+    console.log("sql/update Received: ");
+    console.log(req.body);
     const item = await Item.findByPk(req.params.id);
     if (!item) {
       return res.status(404).json({ error: 'Item not found' });
@@ -47,8 +57,10 @@ app.put('/items/:id', async (req, res) => {
   }
 });
 
-app.delete('/items/:id', async (req, res) => {
+app.delete('/sql/delete/:id', async (req, res) => {
   try {
+    console.log("sql/delete Received: ");
+    console.log(req.body);
     const item = await Item.findByPk(req.params.id);
     if (!item) {
       return res.status(404).json({ error: 'Item not found' });
