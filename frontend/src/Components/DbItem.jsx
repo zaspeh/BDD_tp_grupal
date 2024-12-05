@@ -17,13 +17,13 @@ export const  DbItem = ({dbEntry}) => {
   }
 
   return (
-    <div className="border rounded border-500-red flex">
-      <p className="p-1">{dbEntry.id}</p>
-      <p className="p-1">{dbEntry.username}</p>
-      <p className="p-1">{dbEntry.email}</p>
-      <button onClick={openModal}>Item info</button>
+    <tr>
+      <td className="border p-1 text-center">{dbEntry.id}</td>
+      <td className="border p-1 text-center">{dbEntry.username}</td>
+      <td className="border p-1 text-left">{dbEntry.email}</td>
+      <td className="border p-1 text-center"><button onClick={openModal}>Item info</button></td>
       <UserModal isOpen={modalIsOpen} closeModal={closeModal} user={dbEntry} />
-    </div>
+    </tr>
   )
 }
 

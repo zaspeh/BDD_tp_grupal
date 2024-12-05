@@ -25,8 +25,8 @@ export const ShowDbs = () => {
   }, []);
 
   return (
-    <div className='h-full border border-red-500 flex justify-between'>
-      <div className='border border-red-500 w-full'>
+    <div className='h-fit flex justify-between'>
+      <div className='w-full'>
         <h1>Mongo Database</h1>
         {/* <ul>
           {mongoData.map((item) => {
@@ -35,12 +35,18 @@ export const ShowDbs = () => {
         </ul> */}
       </div>
       <div className='border border-red-500 w-full'>
-        <h1 className='text-center'>SQL Database</h1>
-        <ul>
+        <h1 className='text-center m-2'>SQL Database</h1>
+        <table className='border border-500-red w-full'>
+          <tr className='border'>
+            <th className='border'>ID</th>
+            <th className='border'>Username</th>
+            <th className='border'>Email</th>
+            <th className='border'>More info</th>
+          </tr>
           {sqlData.map((item) => {
             return <DbItem dbEntry={item} />
           })}
-        </ul>
+        </table>
       </div>
     </div>
   );
