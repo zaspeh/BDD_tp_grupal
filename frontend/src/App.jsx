@@ -7,6 +7,7 @@ import { NoSqlForm } from "./Components/Pages/NoSqlForm";
 import { SqlForm } from "./Components/Pages/SqlForm";
 import { ShowDbs } from "./Components/Pages/ShowDbs";
 import { Layout } from "./Components/Pages/Layout";
+import { SqlEditForm } from "./Components/Pages/SqlEditForm";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "showDb",
         element: <ShowDbs />,
       },
+      {
+        path: "editSqlForm",
+        element: <SqlEditForm />,
+      }
     ],
   },
 ]);
