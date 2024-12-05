@@ -1,25 +1,40 @@
 import React, { useState } from 'react';
 import { GenericForm } from '../GenericForm';
-import { useLocation } from 'react-router-dom';
+import { useActionData, useLocation, useNavigate } from 'react-router-dom';
 
 export const SqlEditForm = () => {
   
+  const navigate = useNavigate();
   const { state } = useLocation();
 
-  const userId = state.userId;
+  console.log(state.user);
 
-  console.log(`The user id is: ${userId}`)
+  const userInfo = state.user;
+
+  console.log(userInfo);
+
+  console.log(`The user is: ${userInfo.username}`)
+
+  const updateUserInfo = (formData) => {
+
+    Object.keys(formData).forEach(key => {
+      if (formData[key] !== '') {
+        userInfo[key] = formData[key];
+      }
+    })
+  }
 
   const handleSubmit = (formData) => {
-    console.log('Form data submitted');
-    console.log(formData);
+    // console.log(formData);
+    updateUserInfo(formData);
 
-    fetch(`http://localhost:3000/sql/update/${userId}`, {
+    fetch(`http://localhost:3000/sql/update/${userInfo.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+
+      body: JSON.stringify(userInfo)
     }).then(response => {
       if (!response.ok) {
         return response.json().then(error => {
@@ -29,9 +44,12 @@ export const SqlEditForm = () => {
       return response.json();
     })
     .then(data => {
-      alert('User entry updated succesfully!', data);
+      alert('User entry updated succesfully!');
+      navigate('/showDb');
       console.log("Response: ");
       console.log(data);
+
+
     }).catch(error => {
       console.log("Error: ");
       console.log(error);
@@ -40,7 +58,7 @@ export const SqlEditForm = () => {
 
   return (
     <div className='h-full border border-red-500 flex flex-col justify-center items-center'>
-      <h1 className='mb-5 font-bold text-2xl'>SQL Update entry from user: {userId}</h1>
+      <h1 className='mb-5 font-bold text-2xl'>SQL Update entry from user: {userInfo.username}</h1>
       <GenericForm handleSubmit={handleSubmit} requiredAll={false}/>
     </div>
   );

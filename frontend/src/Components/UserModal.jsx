@@ -11,7 +11,7 @@ export const UserModal = ({isOpen, closeModal, user}) => {
 
   const handleEdit = () => {
     console.log("Edit user");
-    navigate('/editSqlForm', {state: {userId: user.id}});
+    navigate('/editSqlForm', {state: {user: user}});
   }
 
   const handleDelete = () => {
