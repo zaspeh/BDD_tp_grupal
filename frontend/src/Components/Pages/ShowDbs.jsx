@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { DbItem } from '../DbItem';
 
 
 export const ShowDbs = () => {
@@ -24,8 +25,8 @@ export const ShowDbs = () => {
   }, []);
 
   return (
-    <div className='h-full border border-red-500 flex justify-items-center'>
-      <div className='border border-red-500'>
+    <div className='h-full border border-red-500 flex justify-between'>
+      <div className='border border-red-500 w-full'>
         <h1>Mongo Database</h1>
         {/* <ul>
           {mongoData.map((item) => {
@@ -33,11 +34,11 @@ export const ShowDbs = () => {
           })}
         </ul> */}
       </div>
-      <div className='border border-red-500'>
-        <h1>SQL Database</h1>
+      <div className='border border-red-500 w-full'>
+        <h1 className='text-center'>SQL Database</h1>
         <ul>
           {sqlData.map((item) => {
-            return <li key={item.id}>{item.name}</li>
+            return <DbItem dbEntry={item} />
           })}
         </ul>
       </div>
