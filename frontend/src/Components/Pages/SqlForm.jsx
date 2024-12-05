@@ -15,8 +15,16 @@ export const SqlForm = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
-    }).then(response => response.json())
+    }).then(response => {
+      if (!response.ok) {
+        return response.json().then(error => {
+          alert(errorData.error || 'Something went wrong :c');
+        })
+      }
+      return response.json();
+    })
     .then(data => {
+      alert('User entry created succesfully', data);
       console.log("Response: ");
       console.log(data);
     }).catch(error => {
