@@ -11,7 +11,8 @@ yarn-debug.log*
 yarn-error.log*
 
 # Environment variables
-.env
+# .env
+# on a real project this should be 100% ignored, but here its fine
 
 # Database
 *.sqlite

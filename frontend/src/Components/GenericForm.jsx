@@ -8,7 +8,7 @@ export const GenericForm = ({handleSubmit}) => {
 // La password debería ser un hash más que la contraseña en sí
   const [formData, setFormData] = useState({
     name: '',
-    lastName: '',
+    lastname: '',
     username: '',
     email: '',
     password: '',
@@ -31,7 +31,7 @@ export const GenericForm = ({handleSubmit}) => {
   return (
       <form onSubmit={onSubmit} className='flex flex-col'>
         <GenericInput name={"name"} type={"text"} placeholder={"Name"} handleChange={handleChange} required={true} /> 
-        <GenericInput name={"lastName"} type={"text"} placeholder={"Last Name"} handleChange={handleChange} required={true}/>
+        <GenericInput name={"lastname"} type={"text"} placeholder={"Last Name"} handleChange={handleChange} required={true}/>
         <GenericInput name={"username"} type={"text"} placeholder={"Username"} handleChange={handleChange} required={true}/>
         <GenericInput name={"email"} type={"email"} placeholder={"Email"} handleChange={handleChange} required={true}/>
         <GenericInput name={"password"} type={"password"} placeholder={"Password"} handleChange={handleChange} required={true} />
