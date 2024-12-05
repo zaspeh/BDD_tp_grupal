@@ -1,10 +1,18 @@
 import React from "react";
 import ReactModal from 'react-modal';
 import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 ReactModal.setAppElement('#root');
 
 export const UserModal = ({isOpen, closeModal, user}) => {
+
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    console.log("Edit user");
+    navigate('/editSqlForm', {state: {userId: user.id}});
+  }
 
   const handleDelete = () => {
     fetch(`http://localhost:3000/sql/delete/${user.id}`, {
@@ -43,7 +51,7 @@ export const UserModal = ({isOpen, closeModal, user}) => {
         {/* <button onClick={closeModal}>Close</button> */}
         <div className="flex justify-around">
           <button className="border" onClick={handleDelete}>Delete</button>
-          <button className="border">Edit</button>
+          <button className="border" onClick={handleEdit}>Edit</button>
         </div>
     </ReactModal>
   )
