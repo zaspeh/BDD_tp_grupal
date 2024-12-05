@@ -41,7 +41,7 @@ export const ShowDbs = () => {
             <th className='border'>ID</th>
             <th className='border'>Username</th>
             <th className='border'>Email</th>
-            <th className='border'>More info</th>
+            <th className='border'>Actions</th>
           </tr>
           {sqlData.map((item) => {
             return <DbItem dbEntry={item} />

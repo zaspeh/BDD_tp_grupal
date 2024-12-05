@@ -48,8 +48,6 @@ export const SqlEditForm = () => {
       navigate('/showDb');
       console.log("Response: ");
       console.log(data);
-
-
     }).catch(error => {
       console.log("Error: ");
       console.log(error);

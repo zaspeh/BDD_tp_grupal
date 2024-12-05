@@ -1,35 +1,9 @@
 import React from "react";
 import ReactModal from 'react-modal';
-import { useEffect } from 'react';
-import { useNavigate } from "react-router-dom";
 
 ReactModal.setAppElement('#root');
 
 export const UserModal = ({isOpen, closeModal, user}) => {
-
-  const navigate = useNavigate();
-
-  const handleEdit = () => {
-    console.log("Edit user");
-    navigate('/editSqlForm', {state: {user: user}});
-  }
-
-  const handleDelete = () => {
-    fetch(`http://localhost:3000/sql/delete/${user.id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(response => {
-      console.log("Response: ");
-      console.log(response);
-      closeModal();
-      window.location.reload();
-    }).catch(error => {
-      console.log("Error: ");
-      console.log(error);
-    })
-  }
 
   return (
     <ReactModal
@@ -48,11 +22,6 @@ export const UserModal = ({isOpen, closeModal, user}) => {
         <p>Email: {user.email}</p>
         <p>Phone: {user.phone}</p>
         <p>Birthday: {user.birthday}</p>
-        {/* <button onClick={closeModal}>Close</button> */}
-        <div className="flex justify-around">
-          <button className="border" onClick={handleDelete}>Delete</button>
-          <button className="border" onClick={handleEdit}>Edit</button>
-        </div>
     </ReactModal>
   )
 }
