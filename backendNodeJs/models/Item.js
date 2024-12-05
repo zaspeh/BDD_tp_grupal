@@ -7,7 +7,7 @@ const Item = sequelize.define('Item', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  lastName: {
+  lastname: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -31,6 +31,9 @@ const Item = sequelize.define('Item', {
     type: DataTypes.STRING,
     allowNull: false
   },
+}, {
+  tableName: "users",
+  timestamps: false
 });
 
 module.exports = Item;

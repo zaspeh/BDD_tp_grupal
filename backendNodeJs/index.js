@@ -73,8 +73,6 @@ app.delete('/sql/delete/:id', async (req, res) => {
 });
 
 // Sync database and start server
-sequelize.sync({ force: true }).then(() => {
-  app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-  });
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });
