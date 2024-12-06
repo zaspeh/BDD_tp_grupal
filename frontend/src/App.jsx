@@ -8,6 +8,7 @@ import { SqlForm } from "./Components/Pages/SqlForm";
 import { ShowDbs } from "./Components/Pages/ShowDbs";
 import { Layout } from "./Components/Pages/Layout";
 import { SqlEditForm } from "./Components/Pages/SqlEditForm";
+import { NoSqlEditForm } from "./Components/Pages/NoSqlEditForm";
 
 const router = createBrowserRouter([
   {
@@ -29,14 +30,16 @@ const router = createBrowserRouter([
       {
         path: "editSqlForm",
         element: <SqlEditForm />,
+      },
+      {
+        path: "editNoSqlForm",
+        element: <NoSqlEditForm />,
       }
     ],
   },
 ]);
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [dbType, setDbType] = useState('sql'); // Estado para manejar la base de datos activa (SQL o NoSQL)
 
   return (
     <RouterProvider router={router} />

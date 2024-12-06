@@ -44,10 +44,7 @@ app.post('/sql/create', async (req, res) => {
 
 app.get('/sql/getAll', async (req, res) => {
   try {
-    console.log("sql/getAll received: ");
-    console.log(req.body);
     const items = await Item.findAll();
-    console.log("Items: ", items);
     res.status(200).json(items);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -89,11 +86,8 @@ app.delete('/sql/delete/:id', async (req, res) => {
 // // NoSQL Routes (MongoDB)
 app.post('/nosql/create', async (req, res) => {
   try {
-    console.log("nosql/create Received: ");
-    console.log(req.body);
     const newItem = new MongoItem(req.body);  // Crear nuevo documento MongoDB
     await newItem.save();
-    console.log("Item created in MongoDB: ", newItem);
     res.status(201).json(newItem);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -102,9 +96,7 @@ app.post('/nosql/create', async (req, res) => {
 
 app.get('/nosql/getAll', async (req, res) => {
   try {
-    console.log("nosql/getAll received: ");
     const items = await MongoItem.find();
-    console.log("MongoDB Items: ", items);
     res.status(200).json(items);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -112,27 +104,18 @@ app.get('/nosql/getAll', async (req, res) => {
 });
 
 app.put('/nosql/update/:id', async (req, res) => {
-  try {
-    console.log("nosql/update Received: ");
-    const item = await MongoItem.findById(req.params.id);
-    if (!item) {
-      return res.status(404).json({ error: 'Item not found' });
+  console.log("nosql/update Received: ");
+  MongoItem.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, item) => {
+    if (err) {
+      return res.status(500).json({ error: err.message });
     }
-    await item.updateOne(req.body);
     res.status(200).json(item);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+  });
 });
 
 app.delete('/nosql/delete/:id', async (req, res) => {
   try {
-    console.log("nosql/delete Received: ");
-    const item = await MongoItem.findById(req.params.id);
-    if (!item) {
-      return res.status(404).json({ error: 'Item not found' });
-    }
-    await item.remove();
+    const result = await MongoItem.findByIdAndDelete(req.params.id);
     res.status(204).send();
   } catch (error) {
     res.status(500).json({ error: error.message });

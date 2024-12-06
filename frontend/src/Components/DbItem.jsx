@@ -40,7 +40,7 @@ export const  DbItem = ({dbEntry, dbType}) => {
           console.log("Response: ");
           console.log(response);
           closeModal();
-          // window.location.reload();
+          window.location.reload();
         }).catch(error => {
           console.log("Error: ");
           console.log(error);
