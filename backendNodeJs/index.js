@@ -6,6 +6,7 @@ const Item = require('./models/Item');  // Modelo SQL
 const MongoItem = require('./models/MongoItem');  // Modelo MongoDB
 const cors = require('cors');
 const mongoose = require('mongoose');
+const crypto = require('crypto');
 
 // Load environment variables from .env file
 dotenv.config();
@@ -32,8 +33,7 @@ connectMongoDB();
 // SQL Routes
 app.post('/sql/create', async (req, res) => {
   try {
-    console.log("sql/create Received: ");
-    console.log(req.body);
+    req.body.password = crypto.createHash('sha256').update(req.body.password).digest('hex');
     const item = await Item.create(req.body);
     console.log("Item created: ", item);
     res.status(201).json(item);
@@ -86,7 +86,9 @@ app.delete('/sql/delete/:id', async (req, res) => {
 // // NoSQL Routes (MongoDB)
 app.post('/nosql/create', async (req, res) => {
   try {
+    req.body.password = crypto.createHash('sha256').update(req.body.password).digest('hex');
     const newItem = new MongoItem(req.body);  // Crear nuevo documento MongoDB
+    console.log("The document is: ", newItem);
     await newItem.save();
     res.status(201).json(newItem);
   } catch (error) {
