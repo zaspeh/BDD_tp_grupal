@@ -6,8 +6,10 @@ import { DbItem } from '../DbItem';
 export const ShowDbs = () => {
 
   const [sqlData, setSqlData] = useState([]);
+  const [mongoData, setMongoData] = useState([]);
 
   useEffect(() => {
+    // SQL Data fetch
     fetch('http://localhost:3000/sql/getAll', {
       method: 'GET',
       headers: {
@@ -15,13 +17,30 @@ export const ShowDbs = () => {
       }
     }).then(response => response.json())
     .then(data => {
-      console.log("Response: ");
+      console.log("Sql Response: ");
       console.log(data);
       setSqlData(data);
     }).catch(error => {
       console.log("Error: ");
       console.log(error);
     })
+
+    // Mongo Data fetch
+    fetch('http://localhost:3000/noSql/getAll', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(response => response.json())
+    .then(data => {
+      console.log("MongoDB Response: ");
+      console.log(data);
+      setMongoData(data);
+    }).catch(error => {
+      console.log("Error: ");
+      console.log(error);
+    })
+
   }, []);
 
   return (

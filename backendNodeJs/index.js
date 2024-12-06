@@ -18,10 +18,17 @@ app.use(cors());
 
 // Connect to databases
 connectDB();  // SQL
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })  // MongoDB
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((err) => console.log('MongoDB connection error:', err));
 
+const connectMongoDB = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log('Connected to MongoDB');
+  } catch (err) {
+    console.log('MongoDB connection error:', err);
+  }
+};
+
+connectMongoDB();
 // SQL Routes
 app.post('/sql/create', async (req, res) => {
   try {
