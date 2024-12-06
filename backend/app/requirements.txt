@@ -1,7 +1,0 @@
-fastapi
-uvicorn
-sqlalchemy
-pymongo
-pytest
-pytest-cov
-pytest-asyncio
