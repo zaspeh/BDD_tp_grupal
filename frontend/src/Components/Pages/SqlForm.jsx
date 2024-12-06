@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { GenericForm } from '../GenericForm';
 
-
-
 export const SqlForm = () => {
 
   const handleSubmit = (formData) => {
@@ -18,7 +16,7 @@ export const SqlForm = () => {
     }).then(response => {
       if (!response.ok) {
         return response.json().then(error => {
-          alert(errorData.error || 'Something went wrong :c');
+          alert(error.message || 'Something went wrong :c');
         })
       }
       return response.json();

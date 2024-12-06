@@ -7,7 +7,7 @@ export const NoSqlForm = () => {
     console.log(formData);
 
     try {
-      const response = await fetch('http://localhost:3000/nosql/create', {  // Asegúrate de que la URL esté correcta
+      const response = await fetch('http://localhost:3000/nosql/create', { 
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -17,6 +17,7 @@ export const NoSqlForm = () => {
 
       const data = await response.json();
       console.log('NoSQL Data saved:', data);
+      alert('NoSQL User entry saved!');
     } catch (error) {
       console.error('Error saving to NoSQL DB:', error);
     }
